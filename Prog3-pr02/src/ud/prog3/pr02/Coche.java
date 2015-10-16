@@ -10,16 +10,100 @@ public class Coche {
 	protected double posX;  // Posición en X (horizontal)
 	protected double posY;  // Posición en Y (vertical)
 	protected String piloto;  // Nombre de piloto
-	
+	static double masa;
+	static double fuerzaRozamientoAire;
+	static double fuerzaRozamientoSuelo;
+	static double coefRozSuelo;
+	static double coefRozAire;
+	static double FUERZA_BASE_ADELANTE;
+	static double FUERZA_BASE_ATRAS;
 	// Constructores
 	
+	public static double getFUERZA_BASE_ADELANTE() {
+		return FUERZA_BASE_ADELANTE;
+	}
+
+	public static void setFUERZA_BASE_ADELANTE(double fUERZA_BASE_ADELANTE) {
+		FUERZA_BASE_ADELANTE = fUERZA_BASE_ADELANTE;
+	}
+
+	public static double getFUERZA_BASE_ATRAS() {
+		return FUERZA_BASE_ATRAS;
+	}
+
+	public static void setFUERZA_BASE_ATRAS(double fUERZA_BASE_ATRAS) {
+		FUERZA_BASE_ATRAS = fUERZA_BASE_ATRAS;
+	}
+
 	public Coche() {
 		miVelocidad = 0;
 		miDireccionActual = 0;
 		posX = 300;
 		posY = 300;
+		masa=1;
+		fuerzaRozamientoSuelo=15.5;
+		fuerzaRozamientoAire=0.35;
+		FUERZA_BASE_ADELANTE=2000;
+		FUERZA_BASE_ATRAS=1000;
+		
 	}
 	
+	public double getMiVelocidad() {
+		return miVelocidad;
+	}
+
+	public void setMiVelocidad(double miVelocidad) {
+		this.miVelocidad = miVelocidad;
+	}
+
+	public double getMiDireccionActual() {
+		return miDireccionActual;
+	}
+
+	public void setMiDireccionActual(double miDireccionActual) {
+		this.miDireccionActual = miDireccionActual;
+	}
+
+	public static  double getMasa() {
+		return masa;
+	}
+
+	public void setMasa(double masa) {
+		this.masa = masa;
+	}
+
+	public static double getFuerzaRozamientoAire() {
+		return fuerzaRozamientoAire;
+	}
+
+	public void setFuerzaRozamientoAire(double fuerzaRozamientoAire) {
+		this.fuerzaRozamientoAire = fuerzaRozamientoAire;
+	}
+
+	public static double getFuerzaRozamientoSuelo() {
+		return fuerzaRozamientoSuelo;
+	}
+
+	public void setFuerzaRozamientoSuelo(double fuerzaRozamientoSuelo) {
+		this.fuerzaRozamientoSuelo = fuerzaRozamientoSuelo;
+	}
+
+	public double getCoefRozSuelo() {
+		return coefRozSuelo;
+	}
+
+	public void setCoefRozSuelo(double coefRozSuelo) {
+		this.coefRozSuelo = coefRozSuelo;
+	}
+
+	public double getCoefRozAire() {
+		return coefRozAire;
+	}
+
+	public void setCoefRozAire(double coefRozAire) {
+		this.coefRozAire = coefRozAire;
+	}
+
 	/** Devuelve la velocidad actual del coche en píxeles por segundo
 	 * @return	velocidad
 	 */
@@ -103,4 +187,32 @@ public class Coche {
 		return piloto + " (" + posX + "," + posY + ") - " +
 			   "Velocidad: " + miVelocidad + " ## Dirección: " + miDireccionActual; 
 	}
+		 /** Devuelve la fuerza de aceleración del coche, de acuerdo al motor definido en la práctica 2
+		 * @return Fuerza de aceleración en Newtixels
+		 */
+	public double fuerzaAceleracionAdelante() {
+		if (miVelocidad<=-150) return FUERZA_BASE_ADELANTE;
+		else if (miVelocidad<=0)
+		return FUERZA_BASE_ADELANTE*(-miVelocidad/150*0.5+0.5);
+		else if (miVelocidad<=250)
+		return FUERZA_BASE_ADELANTE*(miVelocidad/250*0.5+0.5);
+		else if (miVelocidad<=250)
+		return FUERZA_BASE_ADELANTE*(miVelocidad/250*0.5+0.5);
+		else if (miVelocidad<=750)
+		return FUERZA_BASE_ADELANTE;
+		else return FUERZA_BASE_ADELANTE*(-(miVelocidad-1000)/250);
+		}
+		
+		public double fuerzaAceleracionAtras() {
+			if (miVelocidad<=-150) return FUERZA_BASE_ATRAS;
+			else if (miVelocidad<=0)
+			return FUERZA_BASE_ATRAS*(-miVelocidad/150*0.5+0.5);
+			else if (miVelocidad<=250)
+			return FUERZA_BASE_ATRAS*(miVelocidad/250*0.5+0.5);
+			else if (miVelocidad<=250)
+			return FUERZA_BASE_ATRAS*(miVelocidad/250*0.5+0.5);
+			else if (miVelocidad<=750)
+			return FUERZA_BASE_ATRAS;
+			else return FUERZA_BASE_ADELANTE*(-(miVelocidad-1000)/250);
+			}
 }

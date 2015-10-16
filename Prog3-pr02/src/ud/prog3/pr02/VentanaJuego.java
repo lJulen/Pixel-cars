@@ -3,6 +3,8 @@ package ud.prog3.pr02;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.*;
+import java.util.ArrayList;
+import java.util.Random;
 
 import javax.swing.*;
 
@@ -17,7 +19,7 @@ public class VentanaJuego extends JFrame {
 	MundoJuego miMundo;        // Mundo del juego
 	CocheJuego miCoche;        // Coche del juego
 	MiRunnable miHilo = null;  // Hilo del bucle principal de juego	
-
+	boolean[] obj;
 	/** Constructor de la ventana de juego. Crea y devuelve la ventana inicializada
 	 * sin coches dentro
 	 */
@@ -44,57 +46,50 @@ public class VentanaJuego extends JFrame {
 		// Formato de ventana
 		setSize( 1000, 750 );
 		setResizable( false );
-		// Escuchadores de botones
-		bAcelerar.addActionListener( new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				miCoche.acelera( +10, 1 );
-				// System.out.println( "Nueva velocidad de coche: " + miCoche.getVelocidad() );
-			}
-		});
-		bFrenar.addActionListener( new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				miCoche.acelera( -10, 1 );
-				// System.out.println( "Nueva velocidad de coche: " + miCoche.getVelocidad() );
-			}
-		});
-		bGiraIzq.addActionListener( new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				miCoche.gira( +10 );
-				// System.out.println( "Nueva dirección de coche: " + miCoche.getDireccionActual() );
-			}
-		});
-		bGiraDer.addActionListener( new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				miCoche.gira( -10 );
-				// System.out.println( "Nueva dirección de coche: " + miCoche.getDireccionActual() );
-			}
-		});
+		obj=new boolean[4];
 		
 		// Añadido para que también se gestione por teclado con el KeyListener
 		pPrincipal.addKeyListener( new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				switch (e.getKeyCode()) {
-					case KeyEvent.VK_UP: {
-						miCoche.acelera( +5, 1 );
+				
+					case KeyEvent.VK_UP: {	
+						obj[0]=true;	
 						break;
 					}
 					case KeyEvent.VK_DOWN: {
-						miCoche.acelera( -5, 1 );
+						obj[1]=true;
 						break;
 					}
-					case KeyEvent.VK_LEFT: {
-						miCoche.gira( +10 );
+					case KeyEvent.VK_LEFT: {	
+						obj[2]=true;
 						break;
 					}
-					case KeyEvent.VK_RIGHT: {
-						miCoche.gira( -10 );
+					case KeyEvent.VK_RIGHT: {	
+						obj[3]=true;
 						break;
 					}
+				}
+			}
+			public void keyReleased(KeyEvent e) {
+				switch (e.getKeyCode()) {
+				case KeyEvent.VK_UP: {
+					obj[0]=false;	
+					break;
+				}
+				case KeyEvent.VK_DOWN: {
+					obj[1]=false;
+					break;
+				}
+				case KeyEvent.VK_LEFT: {
+					obj[2]=false;
+					break;
+				}
+				case KeyEvent.VK_RIGHT: {
+					obj[3]=false;
+					break;
+				}
 				}
 			}
 		});
@@ -147,11 +142,55 @@ public class VentanaJuego extends JFrame {
 	 */
 	class MiRunnable implements Runnable {
 		boolean sigo = true;
+		double seg;
 		@Override
 		public void run() {
 			// Bucle principal forever hasta que se pare el juego...
 			while (sigo) {
-				// Mover coche
+				
+double fuerzaRoz= miMundo.calcFuerzaRozamiento(miCoche.getMasa(), miCoche.getCoefRozSuelo(), miCoche.getCoefRozAire(), miCoche.getVelocidad());
+				
+				if (obj[0]==true){
+					
+					
+					miMundo.calcAceleracionConFuerza(miCoche.fuerzaAceleracionAdelante(), miCoche.getMasa());
+					miMundo.aplicarFuerza(miCoche.fuerzaAceleracionAdelante(), miCoche);
+					
+					
+					
+					//miCoche.acelera( +5, 1 );
+				}
+				
+				if (obj[0]==false){
+					
+					
+					//miMundo.calcAceleracionConFuerza(miCoche.fuerzaAceleracionAdelante(), miCoche.getMASA());
+					miMundo.aplicarFuerza(fuerzaRoz, miCoche);
+					
+				}
+
+				
+				
+				if (obj[1]==true){
+					
+					miMundo.calcAceleracionConFuerza(-miCoche.fuerzaAceleracionAtras(), miCoche.getMasa());
+					miMundo.aplicarFuerza(-miCoche.fuerzaAceleracionAtras(), miCoche);
+					
+					//miCoche.acelera( -5, 1 );
+				}
+				
+				if (obj[1]==false){
+					
+					//miMundo.calcAceleracionConFuerza(-miCoche.fuerzaAceleracionAtras(), miCoche.getMASA());
+					miMundo.aplicarFuerza(fuerzaRoz, miCoche);
+					
+				}
+				if (obj[2]==true){
+					miCoche.gira( +10 );
+				}
+				if (obj[3]==true){
+					miCoche.gira( -10 );
+				}
 				miCoche.mueve( 0.040 );
 				// Chequear choques
 				// (se comprueba tanto X como Y porque podría a la vez chocar en las dos direcciones (esquinas)
@@ -160,6 +199,17 @@ public class VentanaJuego extends JFrame {
 				if (miMundo.hayChoqueVertical(miCoche)) // Espejo vertical si choca en Y
 					miMundo.rebotaVertical(miCoche);
 				// Dormir el hilo 40 milisegundos
+				if(seg>=1.2){
+					
+					//Creamos la estrella
+					Random r = new Random();
+					miMundo.creaEstrella(r.nextInt(1000), r.nextInt(750));
+					seg=0.0;			
+
+					
+				}else{
+					seg=seg+0.040;
+				}
 				try {
 					Thread.sleep( 40 );
 				} catch (Exception e) {
