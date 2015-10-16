@@ -20,7 +20,7 @@ public class VentanaJuego extends JFrame {
 	CocheJuego miCoche;        // Coche del juego
 	MiRunnable miHilo = null;  // Hilo del bucle principal de juego	
 	boolean[] obj;
-	/** Constructor de la ventana de juego. Crea y devuelve la ventana inicializada
+	/** Constructor de la ventana de juego. Crea y devuelv la ventana inicializada
 	 * sin coches dentro
 	 */
 	public VentanaJuego() {

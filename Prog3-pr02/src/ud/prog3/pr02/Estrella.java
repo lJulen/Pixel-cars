@@ -4,7 +4,7 @@ import java.util.Date;
 
 
 /** Clase para definir instancias lógicas de coches con posición, dirección y velocidad.
- * @author Andoni Eguíluz
+ * @author Andoni Eguílu
  * Facultad de Ingeniería - Universidad de Deusto (2014)
  */
 public class Estrella{

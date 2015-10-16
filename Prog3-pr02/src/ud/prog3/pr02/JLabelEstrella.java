@@ -16,7 +16,7 @@ public class JLabelEstrella extends JLabel {
 	
 	
 		
-	/** Construye y devuelve el JLabel de la estrella con su gráfico y tamaño
+	/** Construye y develve el JLabel de la estrella con su gráfico y tamaño
 	 */
 	public JLabelEstrella() {
 		// Esto se haría para acceder por sistema de ficheros

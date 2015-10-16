@@ -2,7 +2,7 @@ package ud.prog3.pr02;
 
 /** Clase para definir instancias de coches con sus datos lógicos y una representación
  * visual asociada lista para incluir en un panel de Swing.
- * Según se mueva el coche, su representación (JLabel) se moverá en consonancia.
+ * Según se mueva el coche, su representación JLabel) se moverá en consonancia.
  * @author Andoni Eguíluz
  * Facultad de Ingeniería - Universidad de Deusto (2014)
  */

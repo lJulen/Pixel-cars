@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 
 /** Clase para visualizar un coche en Swing como un JLabel,
  *  con un gráfico específico de coche
- * @author Andoni Eguíluz
+ * @author Andoni Egíluz
  */
 public class JLabelCoche extends JLabel {
 	private static final long serialVersionUID = 1L;  // Para serialización

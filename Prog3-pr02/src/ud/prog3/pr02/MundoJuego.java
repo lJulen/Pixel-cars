@@ -6,7 +6,7 @@ import java.util.Date;
 import javax.swing.JPanel;
 
 /** "Mundo" del juego del coche.
- * Incluye las físicas para el movimiento y los choques de objetos.
+ * Incluye las físicas para l movimiento y los choques de objetos.
  * Representa un espacio 2D en el que se mueven el coche y los objetos de puntuación.
  * @author Andoni Eguíluz Morán
  * Facultad de Ingeniería - Universidad de Deusto
