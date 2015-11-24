@@ -11,20 +11,20 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 
 import java.awt.Font;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class VentanaLog extends JFrame implements ActionListener {
+public class VentanaSign extends JFrame implements ActionListener {
 	JTextField textField;
 	JTextField textField_1;
 	JFrame frame;
 	String nombre;
 	String contra;
 	clsGestorUsuarios objGestor;
-	VentanaUsuario Usuario;
-	VentanaPrincipal pp;
-	public VentanaLog(){
-		frame = new JFrame("Log in");
+	VentanaPrincipal Usuario;
+	public VentanaSign(){
+		frame = new JFrame("Sign up");
 		setSize(400, 200);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
@@ -39,7 +39,7 @@ public class VentanaLog extends JFrame implements ActionListener {
 		getContentPane().add(textField_1);
 		textField_1.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Log in");
+		JButton btnNewButton = new JButton("Sign up");
 		btnNewButton.setBounds(285, 128, 89, 23);
 		getContentPane().add(btnNewButton);
 		btnNewButton.addActionListener(this);
@@ -54,29 +54,25 @@ public class VentanaLog extends JFrame implements ActionListener {
 	}
 	public void actionPerformed(ActionEvent e){
 		switch(e.getActionCommand()){
-		case "Log in":Usuario=new VentanaUsuario();
-		pp=new VentanaPrincipal();
-		int a=0;
-			nombre=textField.getText();
-			contra=textField_1.getText();
-			objGestor=new clsGestorUsuarios();
-			ArrayList<clsUsuario> lista;
-			lista=objGestor.getListaUsuario();
-			for(clsUsuario o: lista) {
-				if(o.getNombre().equals(nombre)&&o.getContra().equals(contra)){
-					JOptionPane.showMessageDialog(null,"Bienvenido");
-					Usuario.setVisible(true);
-					break;
-				}
-			
-				a++;
+		case "Sign up":
+			Usuario=new VentanaPrincipal();
+		objGestor=new clsGestorUsuarios();
+		nombre=textField.getText();
+		contra=textField_1.getText();
+		try{
+			objGestor.nuevoUsuario(nombre,contra);
+			objGestor=null;
+			JOptionPane.showMessageDialog(null, "Usuario añadido");
 			}
-		if(a>=lista.size()){
-			JOptionPane.showMessageDialog(null, " Usuario o contraseña incorrecto");
-		}
+			catch(exceptionUsuarioExistente f){
+				JOptionPane.showMessageDialog(null, f.getMessage()+ ". El usuario no se ha añadido.");
+			}
 		this.dispose();
-			};
+			}	
 	}
+}
+
+
 	
 		
-}
+

@@ -1,4 +1,4 @@
-package ud.prog3.pr02;
+package Interfaz;
 
 /** Clase para definir instancias de coches con sus datos lógicos y una representación
  * visual asociada lista para incluir en un panel de Swing.

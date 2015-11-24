@@ -1,4 +1,4 @@
-package ud.prog3.pr02;
+package Interfaz;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -29,20 +29,12 @@ public class VentanaJuego extends JFrame {
 		// Creación contenedores y componentes
 		pPrincipal = new JPanel();
 		JPanel pBotonera = new JPanel();
-		JButton bAcelerar = new JButton( "Acelera" );
-		JButton bFrenar = new JButton( "Frena" );
-		JButton bGiraIzq = new JButton( "Gira Izq." );
-		JButton bGiraDer = new JButton( "Gira Der." );
 		// Formato y layouts
 		pPrincipal.setLayout( null );
 		pPrincipal.setBackground( Color.white );
 		// Añadido de componentes a contenedores
 		add( pPrincipal, BorderLayout.CENTER );
-		pBotonera.add( bAcelerar );
-		pBotonera.add( bFrenar );
-		pBotonera.add( bGiraIzq );
-		pBotonera.add( bGiraDer );
-		add( pBotonera, BorderLayout.SOUTH );
+		
 		// Formato de ventana
 		setSize( 1000, 750 );
 		setResizable( false );
@@ -199,17 +191,7 @@ double fuerzaRoz= miMundo.calcFuerzaRozamiento(miCoche.getMasa(), miCoche.getCoe
 				if (miMundo.hayChoqueVertical(miCoche)) // Espejo vertical si choca en Y
 					miMundo.rebotaVertical(miCoche);
 				// Dormir el hilo 40 milisegundos
-				if(seg>=1.2){
-					
-					//Creamos la estrella
-					Random r = new Random();
-					miMundo.creaEstrella(r.nextInt(1000), r.nextInt(750));
-					seg=0.0;			
-
-					
-				}else{
-					seg=seg+0.040;
-				}
+			
 				try {
 					Thread.sleep( 40 );
 				} catch (Exception e) {

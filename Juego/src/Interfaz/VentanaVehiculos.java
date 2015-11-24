@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.Timer;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 
 import javax.swing.SwingConstants;
@@ -21,7 +22,11 @@ PanelConImagen contentPane;
 JLabel lblNewLabel;
 JLabel lblNewLabel_1;
 JLabel lblNewLabel_2;
+JLabel lblNewLabel_3;
 JLabel lblNewLabel_4;
+JLabel lblCaracteristicas;
+JLabel lblVelocidad;
+JLabel lblAceleracin;
 String path;
 String path1;
 String path2;
@@ -30,6 +35,7 @@ URL url;
 URL url1;
 URL url2;
 URL url3;
+ImageIcon coche;
 ImageIcon icon;
 ImageIcon icon1;
 ImageIcon icon2;
@@ -76,36 +82,40 @@ JButton btnNewButton ;
 		lblNewLabel.setBounds(232, 39, 279, 200);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblCaracteristicas = new JLabel("Caracteristicas");
+		lblCaracteristicas = new JLabel("Caracteristicas");
 		lblCaracteristicas.setFont(new Font("Jokerman", Font.BOLD, 11));
 		lblCaracteristicas.setForeground(Color.WHITE);
 		lblCaracteristicas.setBounds(326, 250, 109, 14);
+		lblCaracteristicas.setVisible(false);
 		contentPane.add(lblCaracteristicas);
 		
 		lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setBounds(297, 275, 214, 23);
 		contentPane.add(lblNewLabel_1);
 		
-		JLabel lblVelocidad = new JLabel("Velocidad");
+		lblVelocidad = new JLabel("Velocidad");
 		lblVelocidad.setFont(new Font("Jokerman", Font.BOLD, 11));
 		lblVelocidad.setForeground(Color.WHITE);
 		lblVelocidad.setBounds(213, 278, 92, 20);
+		lblVelocidad.setVisible(false);
 		contentPane.add(lblVelocidad);
 		
-		JLabel lblAceleracin = new JLabel("Aceleraci\u00F3n");
+		lblAceleracin = new JLabel("Aceleraci\u00F3n");
 		lblAceleracin.setForeground(Color.WHITE);
 		lblAceleracin.setFont(new Font("Jokerman", Font.BOLD, 11));
 		lblAceleracin.setBounds(213, 315, 92, 14);
+		lblAceleracin.setVisible(false);
 		contentPane.add(lblAceleracin);
 		
 		lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setBounds(297, 306, 214, 23);
 		contentPane.add(lblNewLabel_2);
 		
-		JLabel lblNewLabel_3 = new JLabel("Control");
+		lblNewLabel_3 = new JLabel("Control");
 		lblNewLabel_3.setForeground(Color.WHITE);
 		lblNewLabel_3.setFont(new Font("Jokerman", Font.BOLD, 11));
 		lblNewLabel_3.setBounds(213, 346, 92, 14);
+		lblNewLabel_3.setVisible(false);
 		contentPane.add(lblNewLabel_3);
 		
 		lblNewLabel_4 = new JLabel("");
@@ -139,6 +149,10 @@ JButton btnNewButton ;
 		lblNewLabel_1.setIcon(icon1);
 		lblNewLabel_2.setIcon(icon2);
 		lblNewLabel_4.setIcon(icon3);
+		lblNewLabel_3.setVisible(true);
+		lblCaracteristicas.setVisible(true);
+		lblVelocidad.setVisible(true);
+		lblAceleracin.setVisible(true);
 		btnNewButton.setEnabled(true);
 		blinking();
 		break;
@@ -158,6 +172,10 @@ JButton btnNewButton ;
 		lblNewLabel_1.setIcon(icon1);
 		lblNewLabel_2.setIcon(icon2);
 		lblNewLabel_4.setIcon(icon3);
+		lblNewLabel_3.setVisible(true);
+		lblCaracteristicas.setVisible(true);
+		lblVelocidad.setVisible(true);
+		lblAceleracin.setVisible(true);
 		btnNewButton.setEnabled(true);
 		blinking();
 		break;
@@ -177,6 +195,10 @@ JButton btnNewButton ;
 		lblNewLabel_1.setIcon(icon1);
 		lblNewLabel_2.setIcon(icon2);
 		lblNewLabel_4.setIcon(icon3);
+		lblNewLabel_3.setVisible(true);
+		lblCaracteristicas.setVisible(true);
+		lblVelocidad.setVisible(true);
+		lblAceleracin.setVisible(true);
 		btnNewButton.setEnabled(true);
 		blinking();
 		break;
@@ -199,6 +221,10 @@ JButton btnNewButton ;
     		lblNewLabel_1.setIcon(icon1);
     		lblNewLabel_2.setIcon(icon2);
     		lblNewLabel_4.setIcon(icon3);
+    		lblNewLabel_3.setVisible(true);
+    		lblCaracteristicas.setVisible(true);
+    		lblVelocidad.setVisible(true);
+    		lblAceleracin.setVisible(true);
     		btnNewButton.setEnabled(true);
     		break;
             case 2:path = "/Imagen/Moto.png"; 
@@ -217,6 +243,10 @@ JButton btnNewButton ;
     		lblNewLabel_1.setIcon(icon1);
     		lblNewLabel_2.setIcon(icon2);
     		lblNewLabel_4.setIcon(icon3);
+    		lblNewLabel_3.setVisible(true);
+    		lblCaracteristicas.setVisible(true);
+    		lblVelocidad.setVisible(true);
+    		lblAceleracin.setVisible(true);
     		btnNewButton.setEnabled(true);
     		break;
             case 3:path = "/Imagen/Camion.png"; 
@@ -235,23 +265,34 @@ JButton btnNewButton ;
     		lblNewLabel_1.setIcon(icon1);
     		lblNewLabel_2.setIcon(icon2);
     		lblNewLabel_4.setIcon(icon3);
+    		lblNewLabel_3.setVisible(true);
+    		lblCaracteristicas.setVisible(true);
+    		lblVelocidad.setVisible(true);
+    		lblAceleracin.setVisible(true);
     		btnNewButton.setEnabled(true);
     		break;
             }
 			break;
-		
+		case "Launch":
+		VentanaJuego objjuego=new VentanaJuego();
+		objjuego.setVisible(true);
 		}
+		
 	}
 	 private void blinking() {
 		 btnNewButton.setOpaque(true);
-	        Timer blinkTimer = new Timer(500, new ActionListener() {
+		 Timer blinkTimer;
+		 
+	        blinkTimer = new Timer(500, new ActionListener() {
 	            boolean on=false;
 	            public void actionPerformed(ActionEvent e) {
 	                // blink the button background on and off
 	            	btnNewButton.setBackground( on ? Color.RED : null);
 	                on = !on;
+	               
 	            }
 	        });
 	        blinkTimer.restart();
+		
 	    }
 }

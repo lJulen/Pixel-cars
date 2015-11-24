@@ -43,9 +43,9 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 		case "Log in":VentanaLog objPersona=new VentanaLog();
 		objPersona.setVisible(true);
 		break;
-		/*case "Sign up":VentanaSign objPelicula=new VentanaSign();
-		objPelicula.setVisible(true);
-		break;*/
+		case "Sign up":VentanaSign objSign=new VentanaSign();
+		objSign.setVisible(true);
+		break;
 		}
 	}
 }

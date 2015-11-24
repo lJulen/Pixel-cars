@@ -1,4 +1,4 @@
-package ud.prog3.pr02;
+package Interfaz;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -14,10 +14,6 @@ import javax.swing.JPanel;
 public class MundoJuego {
 	private JPanel panel;  // panel visual del juego
 	CocheJuego miCoche;    // Coche del juego
-	Estrella estrellita;
-	ArrayList<Estrella> ListaEstrellas = new ArrayList<Estrella>();
-	int numEstrellasQuitadas=0;
-	int numEstrellasComidas=0;
 	int numChoques=0;
 	
 	/** Construye un mundo de juego
@@ -142,44 +138,7 @@ public class MundoJuego {
 		 coche.acelera( aceleracion, 0.04 );
 		 } 
 	}
-public void creaEstrella(int posX, int posY){
-		
-		Date ahora = new Date();
-		estrellita = new Estrella();
-		ListaEstrellas.add(estrellita);
-		estrellita.setPosicion( posX, posY );
-		estrellita.setCreacion(ahora);
-		panel.add( estrellita.getGrafico() ); 
-		estrellita.setPos(posX, posY);
-		estrellita.getGrafico().repaint();  
-		
-	}
-public int quitaYRotaEstrellas( long maxTiempo ){
-	
-	if(ListaEstrellas.size()>0){
-	for(int i=0; i<ListaEstrellas.size(); i++){
-		
-		Date ahora = new Date();
-		long tiempoTranscurrido = ahora.getTime() - ListaEstrellas.get(i).getCreacion().getTime();
-		
-		if (tiempoTranscurrido > maxTiempo){
-		
-			ListaEstrellas.remove(i);
-			System.out.println("posicion " + i + " eliminado");
-			panel.remove(ListaEstrellas.get(i).getGrafico());
-			ListaEstrellas.get(i).getGrafico().repaint();
-			
-			numEstrellasQuitadas ++;
-		}else{
-			
-			ListaEstrellas.get(i).getGrafico().setGiro(10);
-			ListaEstrellas.get(i).getGrafico().repaint();
-			}	
-		}
-	}
-	
-	return numEstrellasQuitadas;
-	}
 }
+
 
 

@@ -51,7 +51,6 @@ public class VentanaUsuario extends JFrame implements ActionListener {
 		contentPane.add( bJugar );
 		contentPane.add( bInformacion );
 		contentPane.add( bSalir );
-		Musica.THEME.play();		
 	}
 	public void actionPerformed(ActionEvent e){
 		switch(e.getActionCommand()){
@@ -65,5 +64,6 @@ public class VentanaUsuario extends JFrame implements ActionListener {
 		objSalir.setVisible(true);
 		break;
 		}
+		this.dispose();
 	}
 }

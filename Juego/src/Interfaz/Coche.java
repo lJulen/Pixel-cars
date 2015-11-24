@@ -1,4 +1,4 @@
-package ud.prog3.pr02;
+package Interfaz;
 
 /** Clase para definir instancias lógicas de coches con posición, dirección y velocidad.
  * @author Andoni Eguíluz
