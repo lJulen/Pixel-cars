@@ -275,10 +275,11 @@ JButton btnNewButton ;
 			break;
 		case "Launch":
 		VentanaJuego objjuego=new VentanaJuego();
-		objjuego.setVisible(true);
+		objjuego.Juego();
+		break;
 		}
-		
 	}
+	
 	 private void blinking() {
 		 btnNewButton.setOpaque(true);
 		 Timer blinkTimer;
@@ -295,4 +296,5 @@ JButton btnNewButton ;
 	        blinkTimer.restart();
 		
 	    }
+	 
 }

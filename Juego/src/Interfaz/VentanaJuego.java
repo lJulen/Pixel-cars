@@ -101,32 +101,27 @@ public class VentanaJuego extends JFrame {
 			}
 		});
 	}
-	
-	/** Programa principal de la ventana de juego
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// Crea y visibiliza la ventana con el coche
+	public void Juego(){
 		try {
+	
 			final VentanaJuego miVentana = new VentanaJuego();
-			SwingUtilities.invokeAndWait( new Runnable() {
-				@Override
-				public void run() {
-					miVentana.setVisible( true );
-				}
-			});
+						
 			miVentana.miMundo = new MundoJuego( miVentana.pPrincipal );
 			miVentana.miMundo.creaCoche( 150, 100 );
 			miVentana.miCoche = miVentana.miMundo.getCoche();
-			miVentana.miCoche.setPiloto( "Fernando Alonso" );
 			// Crea el hilo de movimiento del coche y lo lanza
 			miVentana.miHilo = miVentana.new MiRunnable();  // Sintaxis de new para clase interna
 			Thread nuevoHilo = new Thread( miVentana.miHilo );
 			nuevoHilo.start();
+			miVentana.setVisible(true);
+			
+			
 		} catch (Exception e) {
 			System.exit(1);  // Error anormal
 		}
+		
 	}
+	
 	
 	/** Clase interna para implementación de bucle principal del juego como un hilo
 	 * @author Andoni Eguíluz
