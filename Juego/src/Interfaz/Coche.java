@@ -43,8 +43,8 @@ public class Coche {
 		masa=1;
 		fuerzaRozamientoSuelo=15.5;
 		fuerzaRozamientoAire=0.35;
-		FUERZA_BASE_ADELANTE=2000;
-		FUERZA_BASE_ATRAS=1000;
+		FUERZA_BASE_ADELANTE=1000;
+		FUERZA_BASE_ATRAS=500;
 		
 	}
 	

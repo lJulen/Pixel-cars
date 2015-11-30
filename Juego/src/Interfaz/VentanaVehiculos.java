@@ -41,6 +41,7 @@ ImageIcon icon1;
 ImageIcon icon2;
 ImageIcon icon3;
 JButton btnNewButton ;
+int a;
 	public VentanaVehiculos(){
 		setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
 		//Creamos el panel
@@ -154,6 +155,7 @@ JButton btnNewButton ;
 		lblVelocidad.setVisible(true);
 		lblAceleracin.setVisible(true);
 		btnNewButton.setEnabled(true);
+		a=1;
 		blinking();
 		break;
 		case "Moto":path = "/Imagen/Moto.png"; 
@@ -177,6 +179,7 @@ JButton btnNewButton ;
 		lblVelocidad.setVisible(true);
 		lblAceleracin.setVisible(true);
 		btnNewButton.setEnabled(true);
+		a=2;
 		blinking();
 		break;
 		case "Camion":path = "/Imagen/Camion.png"; 
@@ -200,6 +203,7 @@ JButton btnNewButton ;
 		lblVelocidad.setVisible(true);
 		lblAceleracin.setVisible(true);
 		btnNewButton.setEnabled(true);
+		a=3;
 		blinking();
 		break;
 		case "Aleatorio":
@@ -226,6 +230,7 @@ JButton btnNewButton ;
     		lblVelocidad.setVisible(true);
     		lblAceleracin.setVisible(true);
     		btnNewButton.setEnabled(true);
+    		a=1;
     		break;
             case 2:path = "/Imagen/Moto.png"; 
     		path1="/Imagen/Velocidad moto.png";
@@ -248,6 +253,7 @@ JButton btnNewButton ;
     		lblVelocidad.setVisible(true);
     		lblAceleracin.setVisible(true);
     		btnNewButton.setEnabled(true);
+    		a=2;
     		break;
             case 3:path = "/Imagen/Camion.png"; 
     		path1="/Imagen/Velocidad camion.png";
@@ -270,12 +276,18 @@ JButton btnNewButton ;
     		lblVelocidad.setVisible(true);
     		lblAceleracin.setVisible(true);
     		btnNewButton.setEnabled(true);
+    		a=3;
     		break;
             }
 			break;
 		case "Launch":
+			
 		VentanaJuego objjuego=new VentanaJuego();
+		if(a==1){
 		objjuego.Juego();
+		}
+		if(a==2)
+		System.out.println("nua");
 		break;
 		}
 	}

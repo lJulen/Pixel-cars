@@ -19,6 +19,7 @@ public class VentanaJuego extends JFrame {
 	MundoJuego miMundo;        // Mundo del juego
 	CocheJuego miCoche;        // Coche del juego
 	MiRunnable miHilo = null;  // Hilo del bucle principal de juego	
+	
 	boolean[] obj;
 	/** Constructor de la ventana de juego. Crea y devuelv la ventana inicializada
 	 * sin coches dentro
@@ -108,6 +109,8 @@ public class VentanaJuego extends JFrame {
 						
 			miVentana.miMundo = new MundoJuego( miVentana.pPrincipal );
 			miVentana.miMundo.creaCoche( 150, 100 );
+			miVentana.miMundo.creaNivel();
+			miVentana.miMundo.creaCircuito();
 			miVentana.miCoche = miVentana.miMundo.getCoche();
 			// Crea el hilo de movimiento del coche y lo lanza
 			miVentana.miHilo = miVentana.new MiRunnable();  // Sintaxis de new para clase interna

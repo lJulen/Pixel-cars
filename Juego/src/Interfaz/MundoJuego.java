@@ -15,6 +15,9 @@ public class MundoJuego {
 	private JPanel panel;  // panel visual del juego
 	CocheJuego miCoche;    // Coche del juego
 	int numChoques=0;
+	Nivel nivel;
+	Circuito circuito;
+	
 	
 	/** Construye un mundo de juego
 	 * @param panel	Panel visual del juego
@@ -35,6 +38,16 @@ public class MundoJuego {
 		miCoche.getGrafico().repaint();  // Refresca el dibujado del coche
 	}
 	
+	public void creaNivel(){
+		nivel=new Nivel();
+		panel.add(nivel);
+		panel.repaint();
+	}
+	public void creaCircuito(){
+		circuito=new Circuito();
+		panel.add(circuito);
+		panel.repaint();
+	}
 	/** Devuelve el coche del mundo
 	 * @return	Coche en el mundo. Si no lo hay, devuelve null
 	 */
@@ -46,18 +59,18 @@ public class MundoJuego {
 	 * @param coche	Coche cuyo choque se comprueba con su posición actual
 	 * @return	true si hay choque horizontal, false si no lo hay
 	 */
-	public boolean hayChoqueHorizontal( CocheJuego coche ) {
-		return (coche.getPosX() < JLabelCoche.RADIO_ESFERA_COCHE-JLabelCoche.TAMANYO_COCHE/2 
-				|| coche.getPosX()>panel.getWidth()-JLabelCoche.TAMANYO_COCHE/2-JLabelCoche.RADIO_ESFERA_COCHE );
+	public boolean hayChoqueHorizontal( CocheJuego coche) {
+		return (coche.getPosX() == nivel.getHeight()-JLabelCoche.TAMANYO_COCHE/2 
+				);
 	}
 	
 	/** Calcula si hay choque en vertical con los límites del mundo
 	 * @param coche	Coche cuyo choque se comprueba con su posición actual
 	 * @return	true si hay choque vertical, false si no lo hay
 	 */
-	public boolean hayChoqueVertical( CocheJuego coche ) {
-		return (coche.getPosY() < JLabelCoche.RADIO_ESFERA_COCHE-JLabelCoche.TAMANYO_COCHE/2 
-				|| coche.getPosY()>panel.getHeight()-JLabelCoche.TAMANYO_COCHE/2-JLabelCoche.RADIO_ESFERA_COCHE );
+	public boolean hayChoqueVertical( CocheJuego coche) {
+		return (coche.getPosY()== nivel.getWidth()-JLabelCoche.TAMANYO_COCHE/2 
+			);
 	}
 
 	/** Realiza un rebote en horizontal del objeto de juego indicado
