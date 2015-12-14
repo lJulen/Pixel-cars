@@ -102,13 +102,13 @@ public class VentanaJuego extends JFrame {
 			}
 		});
 	}
-	public void Juego(){
+	public void Juego(int a){
 		try {
 	
 			final VentanaJuego miVentana = new VentanaJuego();
 						
 			miVentana.miMundo = new MundoJuego( miVentana.pPrincipal );
-			miVentana.miMundo.creaCoche( 150, 100 );
+			miVentana.miMundo.creaCoche( 150, 100, a);
 			miVentana.miMundo.creaNivel();
 			miVentana.miMundo.creaCircuito();
 			miVentana.miCoche = miVentana.miMundo.getCoche();
@@ -130,6 +130,7 @@ public class VentanaJuego extends JFrame {
 	 * @author Andoni Eguíluz
 	 * Facultad de Ingeniería - Universidad de Deusto (2014)
 	 */
+
 	class MiRunnable implements Runnable {
 		boolean sigo = true;
 		double seg;

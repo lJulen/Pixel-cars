@@ -14,23 +14,23 @@ import javax.swing.JLabel;
  *  con un gráfico específico de coche
  * @author Andoni Egíluz
  */
-public class JLabelCoche extends JLabel {
+public class JLabelCamion extends JLabel {
 	private static final long serialVersionUID = 1L;  // Para serialización
 	public static final int TAMANYO_COCHE = 65;  // píxels (igual ancho que algo)
 	public static final int RADIO_ESFERA_COCHE = 20;  // Radio en píxels del bounding circle del coche (para choques)
 	private static final boolean DIBUJAR_ESFERA_COCHE = true;  // Dibujado (para depuración) del bounding circle de choque del coche
 	/** Construye y devuelve el JLabel del coche con su gráfico y tamaño
 	 */
-	public JLabelCoche() {
+	public JLabelCamion() {
 		// Esto se haría para acceder por sistema de ficheros
 		// 		super( new ImageIcon( "bin/ud/prog3/pr00/coche.png" ) );
 		// Esto se hace para acceder tanto por recurso (jar) como por fichero
 		
 		try {
 	
-			setIcon( new ImageIcon( JLabelCoche.class.getResource( "/Imagen/Coches.png" ).toURI().toURL() ) );
+			setIcon( new ImageIcon( JLabelCamion.class.getResource( "/Imagen/Vehiculos.png" ).toURI().toURL() ) );
 		} catch (Exception e) {
-			System.err.println( "Error en carga de recurso: coche.png no encontrado" );
+			System.err.println( "Error en carga de recurso: Moto.png no encontrado" );
 			e.printStackTrace();
 		}
 		setBounds( 0, 0, TAMANYO_COCHE, TAMANYO_COCHE );

@@ -283,11 +283,9 @@ int a;
 		case "Launch":
 			
 		VentanaJuego objjuego=new VentanaJuego();
-		if(a==1){
-		objjuego.Juego();
-		}
-		if(a==2)
-		System.out.println("nua");
+		JLabelCoche selec=new JLabelCoche();
+		objjuego.Juego(a);
+		
 		break;
 		}
 	}

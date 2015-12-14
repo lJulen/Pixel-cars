@@ -1,5 +1,6 @@
 package Interfaz;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -17,6 +18,8 @@ public class MundoJuego {
 	int numChoques=0;
 	Nivel nivel;
 	Circuito circuito;
+	MotoJuego miMoto;
+	CamionJuego miCamion;
 	
 	
 	/** Construye un mundo de juego
@@ -30,12 +33,29 @@ public class MundoJuego {
 	 * @param posX	Posición X de pixel del nuevo coche
 	 * @param posY	Posición Y de píxel del nuevo coche
 	 */
-	public void creaCoche( int posX, int posY ) {
+	public void creaCoche( int posX, int posY, int a ) {
 		// Crear y añadir el coche a la ventana
-		miCoche = new CocheJuego();
-		miCoche.setPosicion( posX, posY );
+		switch(a){
+		case 1:miCoche = new CocheJuego();
+		miCoche.setPosicion( 260, 600 );
 		panel.add( miCoche.getGrafico() );  // Añade al panel visual
 		miCoche.getGrafico().repaint();  // Refresca el dibujado del coche
+		break;
+		case 2:	miMoto=new MotoJuego();
+		miMoto.setPosicion( 260, 600 );
+		panel.add( miMoto.getGrafico() );  // Añade al panel visual
+		miMoto.getGrafico().repaint();  // Refresca el dibujado del coche
+		break;
+		case 3:	miCamion=new CamionJuego();
+		miCamion.setPosicion( 260, 600 );
+		panel.add( miCamion.getGrafico() );  // Añade al panel visual
+		miCamion.getGrafico().repaint();  // Refresca el dibujado del coche
+		break;
+		}
+		
+		
+	
+		
 	}
 	
 	public void creaNivel(){
@@ -54,14 +74,17 @@ public class MundoJuego {
 	public CocheJuego getCoche() {
 		return miCoche;
 	}
+	
 
 	/** Calcula si hay choque en horizontal con los límites del mundo
 	 * @param coche	Coche cuyo choque se comprueba con su posición actual
 	 * @return	true si hay choque horizontal, false si no lo hay
 	 */
+	
 	public boolean hayChoqueHorizontal( CocheJuego coche) {
-		return (coche.getPosX() == nivel.getHeight()-JLabelCoche.TAMANYO_COCHE/2 
+		return (coche.getPosX() == circuito.getX()-JLabelCoche.TAMANYO_COCHE/2 
 				);
+	
 	}
 	
 	/** Calcula si hay choque en vertical con los límites del mundo
@@ -69,7 +92,7 @@ public class MundoJuego {
 	 * @return	true si hay choque vertical, false si no lo hay
 	 */
 	public boolean hayChoqueVertical( CocheJuego coche) {
-		return (coche.getPosY()== nivel.getWidth()-JLabelCoche.TAMANYO_COCHE/2 
+		return (coche.getPosY()== circuito.getY()-JLabelCoche.TAMANYO_COCHE/2 
 			);
 	}
 
