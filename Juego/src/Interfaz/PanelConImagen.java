@@ -7,35 +7,30 @@ import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-
-
-
 public class PanelConImagen extends JPanel 
 {
- 
  private Image bgImage;
  
  public PanelConImagen() 
  {
   super();
- 
   // Hacemos que el panel sea transparente
   this.setOpaque(false);
  }
  
- /**
-  * Lo utilizaremos para establecerle su imagen de fondo.
-  * @param bgImage La imagen en cuestion
-  */
+	 /**
+	  * Lo utilizaremos para establecerle su imagen de fondo.
+	  * @param bgImage La imagen en cuestion
+	  */
  public void setBackgroundImage(Image bgImage) {
   this.bgImage = bgImage;
  }
  
- /**
-  * Para recuperar una imagen de un archivo...
-  * @param path Ruta de la imagen relativa al proyecto
-  * @return una imagen
-  */
+	 /**
+	  * Para recuperar una imagen de un archivo...
+	  * @param path Ruta de la imagen relativa al proyecto
+	  * @return una imagen
+	  */
  public ImageIcon createImage(String path) {
   URL imgURL = getClass().getResource(path);
      if (imgURL != null) {
@@ -50,8 +45,7 @@ public class PanelConImagen extends JPanel
  
  @Override
  public void paint(Graphics g) 
- {
- 
+ { 
   // Pintamos la imagen de fondo...
   if(bgImage != null) 
   {

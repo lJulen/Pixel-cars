@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 
 import java.awt.Font;
 import java.io.Serializable;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class VentanaLog extends JFrame implements ActionListener {
@@ -20,9 +21,10 @@ public class VentanaLog extends JFrame implements ActionListener {
 	JFrame frame;
 	String nombre;
 	String contra;
-	clsGestorUsuarios objGestor;
 	VentanaUsuario Usuario;
 	VentanaPrincipal pp;
+	boolean paso;
+	
 	public VentanaLog(){
 		frame = new JFrame("Log in");
 		setSize(400, 200);
@@ -52,31 +54,44 @@ public class VentanaLog extends JFrame implements ActionListener {
 		lblContrasea.setBounds(32, 74, 65, 14);
 		getContentPane().add(lblContrasea);		
 	}
-	public void actionPerformed(ActionEvent e){
+	
+	public void actionPerformed(ActionEvent e)
+	{
 		switch(e.getActionCommand()){
-		case "Log in":Usuario=new VentanaUsuario();
+		case "Log in":Usuario = new VentanaUsuario();
 		pp=new VentanaPrincipal();
-		int a=0;
-			nombre=textField.getText();
-			contra=textField_1.getText();
-			objGestor=new clsGestorUsuarios();
-			ArrayList<clsUsuario> lista;
-			lista=objGestor.getListaUsuario();
-			for(clsUsuario o: lista) {
-				if(o.getNombre().equals(nombre)&&o.getContra().equals(contra)){
-					JOptionPane.showMessageDialog(null,"Bienvenido");
-					Usuario.setVisible(true);
-					break;
-				}
+		
+			nombre = textField.getText();
+			contra = textField_1.getText();
 			
-				a++;
-			}
-		if(a>=lista.size()){
-			JOptionPane.showMessageDialog(null, " Usuario o contraseña incorrecto");
-		}
+			BaseDatos.initBD("PixelCars.db");
+			BaseDatos.crearTablaBDU();
+			
+				try {
+					paso = BaseDatos.log(BaseDatos.getStatement(), nombre, contra);
+					
+					if (paso == true)
+					{
+						JOptionPane.showMessageDialog(null,"Bienvenido");
+						BaseDatos.setNombre(nombre);
+						Usuario.setVisible(true);
+						
+					}
+					
+				} catch (SQLException e1) {
+					JOptionPane.showMessageDialog(null, "Usuario o contrasena incorrecta");
+					e1.printStackTrace();
+				}
+				
+				BaseDatos.close();
+		
+		
 		this.dispose();
 			};
 	}
 	
-		
+	public String getNombre()
+	{
+		return nombre;
+	}
 }

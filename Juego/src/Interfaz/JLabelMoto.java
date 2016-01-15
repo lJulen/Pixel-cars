@@ -10,21 +10,16 @@ import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-/** Clase para visualizar un coche en Swing como un JLabel,
- *  con un gráfico específico de coche
- * @author Andoni Egíluz
- */
 public class JLabelMoto extends JLabel {
 	private static final long serialVersionUID = 1L;  // Para serialización
 	public static final int TAMANYO_COCHE = 65;  // píxels (igual ancho que algo)
 	public static final int RADIO_ESFERA_COCHE = 20;  // Radio en píxels del bounding circle del coche (para choques)
 	private static final boolean DIBUJAR_ESFERA_COCHE = true;  // Dibujado (para depuración) del bounding circle de choque del coche
-	/** Construye y devuelve el JLabel del coche con su gráfico y tamaño
-	 */
+	private double miGiro = Math.PI/2;
+	
+		/** Construye y devuelve el JLabel del coche con su gráfico y tamaño
+		 */
 	public JLabelMoto() {
-		// Esto se haría para acceder por sistema de ficheros
-		// 		super( new ImageIcon( "bin/ud/prog3/pr00/coche.png" ) );
-		// Esto se hace para acceder tanto por recurso (jar) como por fichero
 		
 		try {
 	
@@ -34,18 +29,16 @@ public class JLabelMoto extends JLabel {
 			e.printStackTrace();
 		}
 		setBounds( 0, 0, TAMANYO_COCHE, TAMANYO_COCHE );
-		// Esto sería útil cuando hay algún problema con el gráfico: borde de color del JLabel
-		// setBorder( BorderFactory.createLineBorder( Color.yellow, 4 ));
 	}
 	
 	// giro
 	
-	private double miGiro = Math.PI/2;
-	/** Cambia el giro del JLabel
-	 * @param gradosGiro	Grados a los que tiene que "apuntar" el coche,
-	 * 						considerados con el 0 en el eje OX positivo,
-	 * 						positivo en sentido antihorario, negativo horario.
-	 */
+
+		/** Cambia el giro del JLabel
+		 * @param gradosGiro	Grados a los que tiene que "apuntar" el coche,
+		 * 						considerados con el 0 en el eje OX positivo,
+		 * 						positivo en sentido antihorario, negativo horario.
+		 */
 	public void setGiro( double gradosGiro ) {
 		// De grados a radianes...
 		miGiro = gradosGiro/180*Math.PI;

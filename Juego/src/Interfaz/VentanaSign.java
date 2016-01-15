@@ -13,6 +13,8 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.io.IOException;
 import java.io.Serializable;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class VentanaSign extends JFrame implements ActionListener {
@@ -21,8 +23,8 @@ public class VentanaSign extends JFrame implements ActionListener {
 	JFrame frame;
 	String nombre;
 	String contra;
-	clsGestorUsuarios objGestor;
 	VentanaPrincipal Usuario;
+	
 	public VentanaSign(){
 		frame = new JFrame("Sign up");
 		setSize(400, 200);
@@ -56,23 +58,32 @@ public class VentanaSign extends JFrame implements ActionListener {
 		switch(e.getActionCommand()){
 		case "Sign up":
 			Usuario=new VentanaPrincipal();
-		objGestor=new clsGestorUsuarios();
 		nombre=textField.getText();
 		contra=textField_1.getText();
-		try{
-			objGestor.nuevoUsuario(nombre,contra);
-			objGestor=null;
-			JOptionPane.showMessageDialog(null, "Usuario añadido");
+		
+		BaseDatos.initBD("PixelCars.db");
+		BaseDatos.crearTablaBDU();
+		
+		
+		if (contra.equals(""))
+		{
+			JOptionPane.showMessageDialog(null, "No se ha introducido contrasena!");
+		}
+		else
+		{
+			try {
+				BaseDatos.anyadirUsuario(BaseDatos.getStatement(), nombre, contra);
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
-			catch(exceptionUsuarioExistente f){
-				JOptionPane.showMessageDialog(null, f.getMessage()+ ". El usuario no se ha añadido.");
-			}
+		}
+		
+		BaseDatos.close();
+	
+		
 		this.dispose();
 			}	
 	}
-}
-
-
 	
-		
-
+}

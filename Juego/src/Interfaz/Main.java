@@ -1,15 +1,15 @@
 package Interfaz;
 
 import javax.swing.SwingUtilities;
-
-import Interfaz.VentanaJuego.MiRunnable;
-
+import Interfaz.VentanaJuegoCoche.MiRunnable;
+import Interfaz.VentanaJuegoMoto.MiRunnableMoto;
 public class Main {
 
 	public static void main(String[] args) {
-		//Musica.THEME.loop();
+	
 		VentanaPrincipal Menu=new VentanaPrincipal();
 		Menu.setVisible(true);		
 	}
 
 }
+

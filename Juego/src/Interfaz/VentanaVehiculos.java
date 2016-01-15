@@ -42,6 +42,8 @@ ImageIcon icon2;
 ImageIcon icon3;
 JButton btnNewButton ;
 int a;
+
+
 	public VentanaVehiculos(){
 		setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
 		//Creamos el panel
@@ -130,6 +132,7 @@ int a;
 		contentPane.add(btnNewButton);
 		btnNewButton.addActionListener(this);
 		
+		Musica.THEME.loop();
 		
 	}
 	public void actionPerformed(ActionEvent e){
@@ -158,6 +161,7 @@ int a;
 		a=1;
 		blinking();
 		break;
+		
 		case "Moto":path = "/Imagen/Moto.png"; 
 		path1="/Imagen/Velocidad moto.png";
 		path2="/Imagen/Acel moto.png";
@@ -182,6 +186,7 @@ int a;
 		a=2;
 		blinking();
 		break;
+		
 		case "Camion":path = "/Imagen/Camion.png"; 
 		path1="/Imagen/Velocidad camion.png";
 		path2="/Imagen/Acel camion.png";
@@ -206,86 +211,99 @@ int a;
 		a=3;
 		blinking();
 		break;
+		
 		case "Aleatorio":
 			int numeroAleatorio = (int) (Math.random()*3+1);
             switch(numeroAleatorio){
-            case 1:path = "/Imagen/Coche.png";  
-    		path1="/Imagen/Velocidad coche.png";
-    		path2="/Imagen/Acel coche.png";
-    		path3="/Imagen/Control coche.png";
-    		url = this.getClass().getResource(path);  
-    		url1=this.getClass().getResource(path1);  
-    		url2=this.getClass().getResource(path2);
-    		url3=this.getClass().getResource(path3);
-    		icon = new ImageIcon(url);  
-    		icon1 = new ImageIcon(url1);  
-    		icon2 = new ImageIcon(url2);  
-    		icon3 = new ImageIcon(url3);  
-    		lblNewLabel.setIcon(icon); 
-    		lblNewLabel_1.setIcon(icon1);
-    		lblNewLabel_2.setIcon(icon2);
-    		lblNewLabel_4.setIcon(icon3);
-    		lblNewLabel_3.setVisible(true);
-    		lblCaracteristicas.setVisible(true);
-    		lblVelocidad.setVisible(true);
-    		lblAceleracin.setVisible(true);
-    		btnNewButton.setEnabled(true);
-    		a=1;
-    		break;
-            case 2:path = "/Imagen/Moto.png"; 
-    		path1="/Imagen/Velocidad moto.png";
-    		path2="/Imagen/Acel moto.png";
-    		path3="/Imagen/Control moto.png";
-    		url = this.getClass().getResource(path); 
-    		url1=this.getClass().getResource(path1);  
-    		url2=this.getClass().getResource(path2);  
-    		url3=this.getClass().getResource(path3);  
-    		icon = new ImageIcon(url);
-    		icon1 = new ImageIcon(url1); 
-    		icon2 = new ImageIcon(url2); 
-    		icon3 = new ImageIcon(url3); 
-    		lblNewLabel.setIcon(icon); 
-    		lblNewLabel_1.setIcon(icon1);
-    		lblNewLabel_2.setIcon(icon2);
-    		lblNewLabel_4.setIcon(icon3);
-    		lblNewLabel_3.setVisible(true);
-    		lblCaracteristicas.setVisible(true);
-    		lblVelocidad.setVisible(true);
-    		lblAceleracin.setVisible(true);
-    		btnNewButton.setEnabled(true);
-    		a=2;
-    		break;
-            case 3:path = "/Imagen/Camion.png"; 
-    		path1="/Imagen/Velocidad camion.png";
-    		path2="/Imagen/Acel camion.png";
-    		path3="/Imagen/Control camion.png";
-    		url = this.getClass().getResource(path);  
-    		url1=this.getClass().getResource(path1);  
-    		url2=this.getClass().getResource(path2);  
-    		url3=this.getClass().getResource(path3);  
-    		icon = new ImageIcon(url);
-    		icon1 = new ImageIcon(url1);
-    		icon2 = new ImageIcon(url2);	
-    		icon3 = new ImageIcon(url3);	
-    		lblNewLabel.setIcon(icon); 
-    		lblNewLabel_1.setIcon(icon1);
-    		lblNewLabel_2.setIcon(icon2);
-    		lblNewLabel_4.setIcon(icon3);
-    		lblNewLabel_3.setVisible(true);
-    		lblCaracteristicas.setVisible(true);
-    		lblVelocidad.setVisible(true);
-    		lblAceleracin.setVisible(true);
-    		btnNewButton.setEnabled(true);
-    		a=3;
-    		break;
+	            case 1:path = "/Imagen/Coche.png";  
+	    		path1="/Imagen/Velocidad coche.png";
+	    		path2="/Imagen/Acel coche.png";
+	    		path3="/Imagen/Control coche.png";
+	    		url = this.getClass().getResource(path);  
+	    		url1=this.getClass().getResource(path1);  
+	    		url2=this.getClass().getResource(path2);
+	    		url3=this.getClass().getResource(path3);
+	    		icon = new ImageIcon(url);  
+	    		icon1 = new ImageIcon(url1);  
+	    		icon2 = new ImageIcon(url2);  
+	    		icon3 = new ImageIcon(url3);  
+	    		lblNewLabel.setIcon(icon); 
+	    		lblNewLabel_1.setIcon(icon1);
+	    		lblNewLabel_2.setIcon(icon2);
+	    		lblNewLabel_4.setIcon(icon3);
+	    		lblNewLabel_3.setVisible(true);
+	    		lblCaracteristicas.setVisible(true);
+	    		lblVelocidad.setVisible(true);
+	    		lblAceleracin.setVisible(true);
+	    		btnNewButton.setEnabled(true);
+	    		a=1;
+	    		break;
+	    		
+	            case 2:path = "/Imagen/Moto.png"; 
+	    		path1="/Imagen/Velocidad moto.png";
+	    		path2="/Imagen/Acel moto.png";
+	    		path3="/Imagen/Control moto.png";
+	    		url = this.getClass().getResource(path); 
+	    		url1=this.getClass().getResource(path1);  
+	    		url2=this.getClass().getResource(path2);  
+	    		url3=this.getClass().getResource(path3);  
+	    		icon = new ImageIcon(url);
+	    		icon1 = new ImageIcon(url1); 
+	    		icon2 = new ImageIcon(url2); 
+	    		icon3 = new ImageIcon(url3); 
+	    		lblNewLabel.setIcon(icon); 
+	    		lblNewLabel_1.setIcon(icon1);
+	    		lblNewLabel_2.setIcon(icon2);
+	    		lblNewLabel_4.setIcon(icon3);
+	    		lblNewLabel_3.setVisible(true);
+	    		lblCaracteristicas.setVisible(true);
+	    		lblVelocidad.setVisible(true);
+	    		lblAceleracin.setVisible(true);
+	    		btnNewButton.setEnabled(true);
+	    		a=2;
+	    		break;
+	    		
+	            case 3:path = "/Imagen/Camion.png"; 
+	    		path1="/Imagen/Velocidad camion.png";
+	    		path2="/Imagen/Acel camion.png";
+	    		path3="/Imagen/Control camion.png";
+	    		url = this.getClass().getResource(path);  
+	    		url1=this.getClass().getResource(path1);  
+	    		url2=this.getClass().getResource(path2);  
+	    		url3=this.getClass().getResource(path3);  
+	    		icon = new ImageIcon(url);
+	    		icon1 = new ImageIcon(url1);
+	    		icon2 = new ImageIcon(url2);	
+	    		icon3 = new ImageIcon(url3);	
+	    		lblNewLabel.setIcon(icon); 
+	    		lblNewLabel_1.setIcon(icon1);
+	    		lblNewLabel_2.setIcon(icon2);
+	    		lblNewLabel_4.setIcon(icon3);
+	    		lblNewLabel_3.setVisible(true);
+	    		lblCaracteristicas.setVisible(true);
+	    		lblVelocidad.setVisible(true);
+	    		lblAceleracin.setVisible(true);
+	    		btnNewButton.setEnabled(true);
+	    		a=3;
+	    		break;
             }
 			break;
-		case "Launch":
 			
-		VentanaJuego objjuego=new VentanaJuego();
-		JLabelCoche selec=new JLabelCoche();
-		objjuego.Juego(a);
-		
+		case "Launch":
+			switch(a){
+				case 1:VentanaJuegoCoche objjuegocoche=new VentanaJuegoCoche();
+				objjuegocoche.Juego();
+				break;
+				case 2: VentanaJuegoMoto objjuegomoto=new VentanaJuegoMoto();
+				objjuegomoto.Juego();
+				break;
+				case 3: VentanaJuegoCamion objjuegocamion=new VentanaJuegoCamion();
+				objjuegocamion.Juego();
+				break;
+			}	
+			
+			Musica.THEME.stop();
+			this.dispose();
 		break;
 		}
 	}

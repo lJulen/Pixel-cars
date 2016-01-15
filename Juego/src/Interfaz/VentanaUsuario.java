@@ -57,9 +57,9 @@ public class VentanaUsuario extends JFrame implements ActionListener {
 		case "Jugar":VentanaVehiculos objVehiculos=new VentanaVehiculos();
 		objVehiculos.setVisible(true);
 		break;
-		/*case "Información":VentanaVehiculo objVehiculo=new VentanaVehiculo();
-		objPersona.setVisible(true);
-		break;*/
+		case "Información": Informacion objInformacion = new Informacion();
+		objInformacion.setVisible(true);
+		break;
 		case "Salir":VentanaPrincipal objSalir=new VentanaPrincipal();
 		objSalir.setVisible(true);
 		break;
